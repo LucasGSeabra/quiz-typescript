@@ -1,0 +1,61 @@
+<div class="container">
+  <!-- Container com o quiz -->
+  <div class="quiz-container" *ngIf="quizFinalizado === false">
+    <!-- Título -->
+    <h1>Quiz de typescript</h1>
+    <!-- Perguntas -->
+    <div class="question-container">
+      <h3>{{perguntas[perguntaAtual].pergunta}}</h3>
+    </div>
+    <!-- listagem de alternativas -->
+    <div class="options-container">
+      <button
+        *ngFor="let opcao of perguntas[perguntaAtual].opcoes; index as index"
+        (click)="selecionarAlternativa(index)"
+        class="button"
+        [class.selected]="conferirAlternativaSelecionada(index)"
+      >
+        {{opcao}}
+      </button>
+    </div>
+    <!-- controle do quiz -->
+    <div class="form-control-container">
+      <button [disabled]="perguntaAtual <= 0" (click)="perguntaAnterior()">
+        Anterior
+      </button>
+      <button
+        [disabled]="alternativaSelecionada === null"
+        (click)="responderPergunta()"
+      >
+        Confirmar resposta
+      </button>
+      <button
+        *ngIf="perguntaAtual + 1 < perguntas.length"
+        [disabled]="perguntaAtual >= respostas.length"
+        (click)="proximaPergunta()"
+      >
+        Próxima
+      </button>
+      <button
+        *ngIf="perguntaAtual + 1 === perguntas.length"
+        [disabled]="perguntaAtual >= respostas.length"
+        (click)="finalizarQuiz()"
+      >
+        Finalizar
+      </button>
+    </div>
+  </div>
+  <!-- Container com resultados -->
+  <div class="result-container" *ngIf="quizFinalizado === true">
+    <!-- Resultado título -->
+    <h1>Você encerrou o quiz</h1>
+    <!-- Desempenho -->
+    <div class="performance-container">
+      <h3>Nota:</h3>
+      <p>{{pontuacao}}/{{perguntas.length}}</p>
+      <h3>Aproveitamento:</h3>
+      <p>{{aproveitamento.toFixed(1)}}%</p>
+    </div>
+    <button (click)="reset()">Refazer</button>
+  </div>
+</div>

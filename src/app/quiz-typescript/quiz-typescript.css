@@ -1,0 +1,46 @@
+.container {
+  height: 100vh;
+  width: 100%;
+}
+
+.quiz-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-container {
+  margin-bottom: 16px;
+}
+
+.result-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.performance-container {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-control-container {
+  display: flex;
+  gap: 24px;
+}
+
+.button.selected {
+  background-color: aquamarine;
+}
