@@ -20,23 +20,34 @@
     </div>
     <!-- controle do quiz -->
     <div class="form-control-container">
-      <button [disabled]="perguntaAtual <= 0" (click)="perguntaAnterior()">
+      <!-- retroceder pergunta -->
+      <button
+        class="control-button"
+        [disabled]="perguntaAtual <= 0"
+        (click)="perguntaAnterior()"
+      >
         Anterior
       </button>
+      <!-- confirmar resposta -->
       <button
+        class="control-button"
         [disabled]="alternativaSelecionada === null"
         (click)="responderPergunta()"
       >
         Confirmar resposta
       </button>
+      <!-- avancar pergunta -->
       <button
+        class="control-button"
         *ngIf="perguntaAtual + 1 < perguntas.length"
         [disabled]="perguntaAtual >= respostas.length"
         (click)="proximaPergunta()"
       >
         Próxima
       </button>
+      <!-- encerrar quiz -->
       <button
+        class="control-button"
         *ngIf="perguntaAtual + 1 === perguntas.length"
         [disabled]="perguntaAtual >= respostas.length"
         (click)="finalizarQuiz()"
@@ -56,6 +67,7 @@
       <h3>Aproveitamento:</h3>
       <p>{{aproveitamento.toFixed(1)}}%</p>
     </div>
+    <!-- refazer quiz -->
     <button (click)="reset()">Refazer</button>
   </div>
 </div>
